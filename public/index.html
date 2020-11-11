@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="public/style.css">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Welcome to the NBA</h1>
+    <h2>League of Monsters</h2>
+    <form autocomplete="off">
+        <input type="text" id="search-field" list="players" required>
+        <datalist id="players">
+            <option>Lebron James</option>
+            <option>Kevin Durant</option>
+            <option>Stephen Curry</option>
+            <option>Carmelo Anthony</option>
+            <option>James Harden</option>
+        </datalist>
+        <input type="submit" value="Go">
+    </form>
+
+    <div id="data-container">
+        
+    </div>
+
+    <script src="public/index.js"></script>
+</body>
+</html>
