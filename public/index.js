@@ -40,7 +40,7 @@ function addEvent() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     dataContainer.innerHTML = "";
-    fetch(`http://localhost:3000/getdata?name=${grappedNames[0]}`)
+    fetch(`${HOME_URL}getdata?name=${grappedNames[0]}`)
       .then((response) => {
         if (response.ok) {
           return response.json();
