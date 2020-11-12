@@ -4,8 +4,8 @@ let grappedDataByName;
 const dataList = document.querySelector("#players");
 const form = document.querySelector("form");
 const dataContainer = document.querySelector("#data-container");
-const HOME_URL = "http://localhost:3000/";
-//const HOME_URL="https://nba-monsters.herokuapp.com/";
+//const HOME_URL = "http://localhost:3000/";
+const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
@@ -15,8 +15,8 @@ searchField.addEventListener("keyup", (e) => {
       return response.status;
     })
     .then((data) => {
+      updateDataList(data); //this function will update the datalist
       grappedNames = data;
-      updateDataList(); //this function will update the datalist
     })
     .catch((error) => {
       console.log("ERROOOOR: ", error);
@@ -26,9 +26,9 @@ searchField.addEventListener("keyup", (e) => {
 addEvent(); //calling this function to add event listener (submit) to the form.
 
 //this function will update the datalist.
-function updateDataList() {
+function updateDataList(data) {
   dataList.innerHTML = "";
-  grappedNames.forEach((player) => {
+  data.forEach((player) => {
     let option = document.createElement("option");
     option.innerHTML = player;
     dataList.appendChild(option);
@@ -40,18 +40,15 @@ function addEvent() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     dataContainer.innerHTML = "";
-    console.log("grapped names : ", grappedNames[0]);
     fetch(`http://localhost:3000/getdata?name=${grappedNames[0]}`)
       .then((response) => {
         if (response.ok) {
-          console.log("response is ok");
           return response.json();
         } else {
           return response.statusCode;
         }
       })
       .then((data) => {
-        console.log("here is the data: ", data);
         grappedDataByName = data;
         render(); //this function is responsible to show data in the DOM
       })
@@ -64,7 +61,6 @@ function addEvent() {
 
 //This function is responsible to show data in the DOM
 function render() {
-  console.log("GRAPPED DATA BY NAME IS: ", grappedDataByName);
   let playerDiv = document.createElement("div");
   playerDiv.id = "player-card";
   playerDiv.innerHTML = `<h3>Player Name: <span>${grappedDataByName.name}</span></h3>
