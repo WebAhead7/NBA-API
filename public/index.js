@@ -9,6 +9,8 @@ const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
+  if(e.keyCode!==17){/*because ctrl makes some problems(when pressing ctrl+R and
+    you are inside the search field you will get a rejected response)*/
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
@@ -21,6 +23,7 @@ searchField.addEventListener("keyup", (e) => {
     .catch(() => {
       alert("Something Went Wrong!");
     });
+  }
 });
 
 addEvent(); //calling this function to add event listener (submit) to the form.
