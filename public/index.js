@@ -7,10 +7,10 @@ const dataContainer = document.querySelector("#data-container");
 //const HOME_URL = "http://localhost:3000/";
 const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
+
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
-  if(!e.keyCode!==65 && !e.ctrlKey){/*because ctrl makes some problems(when pressing ctrl+R and
-    you are inside the search field you will get a rejected response)*/
+  if(searchField.value!==""){
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
