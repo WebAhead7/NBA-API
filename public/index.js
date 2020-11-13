@@ -21,7 +21,6 @@ searchField.addEventListener("keyup", (e) => {
     })
     .catch((error) => {
       console.error(error);
-      alert("Something Went Wrong!");
     });
   
 });
@@ -57,7 +56,6 @@ function addEvent() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Something Went Wrong!");
       });
     searchField.value = "";
   });
