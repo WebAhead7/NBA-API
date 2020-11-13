@@ -4,14 +4,14 @@ let grappedDataByName;
 const dataList = document.querySelector("#players");
 const form = document.querySelector("form");
 const dataContainer = document.querySelector("#data-container");
-//const HOME_URL = "http://localhost:3000/";
-const HOME_URL = "https://nba-monsters.herokuapp.com/";
+const HOME_URL = "http://localhost:3000/";
+//const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
   console.log(e.keyCode);
-  if(e.keyCode!==17){
+  if(!e.ctrlKey){
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
