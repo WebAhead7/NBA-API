@@ -12,7 +12,7 @@ function getPlayerHandler(request, response) {
   const queryObject = querystring.parse(query);
   const { player } = queryObject;
   const dataToSend = getPlayerByName(player);
-  response.writeHead(200, { "content-type": "application.json" });
+  response.writeHead(200, { "content-type": "application/json" });
   response.end(JSON.stringify(dataToSend));
 }
 
