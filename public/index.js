@@ -10,7 +10,6 @@ const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
-  console.log(e.keyCode);
   if(!e.ctrlKey){
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
@@ -18,13 +17,9 @@ searchField.addEventListener("keyup", (e) => {
       return response.status;
     })
     .then((data) => {
-      if(data.length>0){
       updateDataList(data); //this function will update the datalist
       grappedNames = data;
-      }
-      else{
-        alert("Name Not Found!");
-      }
+      
     })
     .catch((error) => {
       console.error(error);
@@ -49,6 +44,11 @@ function updateDataList(data) {
 function addEvent() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    if(grappedNames.length===0){
+    alert("Name Not Found!");
+    searchField.value="";
+    }
+    else{
     dataContainer.innerHTML = "";
     fetch(`${HOME_URL}getdata?name=${grappedNames[0]}`)
       .then((response) => {
@@ -67,7 +67,8 @@ function addEvent() {
         alert("Something Went Wrong!");
       });
     searchField.value = "";
-  });
+}});
+
 }
 
 //This function is responsible to show data in the DOM
