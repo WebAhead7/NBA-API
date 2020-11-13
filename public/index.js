@@ -26,7 +26,7 @@ searchField.addEventListener("keyup", (e) => {
       alert("Try Again! Something Went Wrong");
     });
   }
-});
+})
 
 addEvent(); //calling this function to add event listener (submit) to the form.
 
