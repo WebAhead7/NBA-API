@@ -10,7 +10,7 @@ const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
-  if(!e.ctrlKey){
+  if(document.readyState==="complete"){
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
