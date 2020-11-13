@@ -4,13 +4,13 @@ let grappedDataByName;
 const dataList = document.querySelector("#players");
 const form = document.querySelector("form");
 const dataContainer = document.querySelector("#data-container");
-//const HOME_URL = "http://localhost:3000/";
-const HOME_URL = "https://nba-monsters.herokuapp.com/";
+const HOME_URL = "http://localhost:3000/";
+//const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
-  if(document.readyState==="complete"){
+  if(document.readyState!=="loading"){
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
@@ -23,7 +23,7 @@ searchField.addEventListener("keyup", (e) => {
     })
     .catch((error) => {
       console.error(error);
-      alert("Something Went Wrong!");
+      alert("Try Again! Something Went Wrong");
     });
   }
 });
@@ -68,8 +68,9 @@ function addEvent() {
       });
     searchField.value = "";
 }});
-
 }
+
+
 
 //This function is responsible to show data in the DOM
 function render() {
@@ -85,3 +86,5 @@ function render() {
     <h3>Three Points Percentage Per Game: <span>${grappedDataByName.three_point_percentage}</span></h3>`;
   dataContainer.appendChild(playerDiv);
 }
+
+
