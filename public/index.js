@@ -22,7 +22,6 @@ searchField.addEventListener("keyup", (e) => {
     })
     .catch((error) => {
       console.error(error);
-      alert("Try Again! Something Went Wrong");
     });
   
   
@@ -45,6 +44,7 @@ function addEvent() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if(grappedNames.length===0){
+    alert("Name Not Found!");
     searchField.value="";
     }
     else{
