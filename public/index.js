@@ -10,7 +10,6 @@ const HOME_URL = "http://localhost:3000/";
 
 //keyup event listener
 searchField.addEventListener("keyup", (e) => {
-  e.preventDefault();
   fetch(`${HOME_URL}getnames?player=${e.target.value}`)
     .then((response) => {
       if (response.ok) return response.json();
