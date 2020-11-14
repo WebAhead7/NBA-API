@@ -4,8 +4,8 @@ let grappedDataByName;
 const dataList = document.querySelector("#players");
 const form = document.querySelector("form");
 const dataContainer = document.querySelector("#data-container");
-const HOME_URL = "http://localhost:3000/";
-//const HOME_URL = "https://nba-monsters.herokuapp.com/";
+//const HOME_URL = "http://localhost:3000/";
+const HOME_URL = "https://nba-monsters.herokuapp.com/";
 
 
 //keyup event listener
@@ -45,7 +45,6 @@ function addEvent() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     if(grappedNames.length===0){
-    alert("Name Not Found!");
     searchField.value="";
     }
     else{
@@ -64,7 +63,6 @@ function addEvent() {
       })
       .catch((error) => {
         console.error(error);
-        alert("Something Went Wrong!");
       });
     searchField.value = "";
 }});
